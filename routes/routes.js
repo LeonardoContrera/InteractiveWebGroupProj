@@ -15,6 +15,7 @@ let mdb = mongoose.connection;
 mdb.on('error', console.error.bind(console, 'connection error'));
 mdb.once('open', callback => {});
 
+
 let accountSchema = mongoose.Schema({
     username: String,
     password: String,
@@ -35,14 +36,13 @@ exports.index = (req, res) => {
 
 exports.indexLogIn = (req, res) =>{
     console.log(req.body.username);
+
     if(req.body.username == 'user' && req.body.password == 'pass'){
         req.session.user = {
             isAuthenticated: true,
             username: req.body.username
         }
         res.redirect('/private');
-    } else {
-        res.redirect('/public');
     }
 };
 

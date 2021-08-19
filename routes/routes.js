@@ -1,5 +1,6 @@
 const { response } = require('express');
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
 mongoose.Promise = global.Promise;
 
@@ -43,6 +44,8 @@ exports.indexLogIn = (req, res) =>{
             username: req.body.username
         }
         res.redirect('/private');
+    } else {
+        res.redirect('/');
     }
 };
 
@@ -67,9 +70,12 @@ exports.create = (req, res) => {
 }
 
 exports.createAccount = (req, res) => {
+    let salt = bcrypt.genSaltSync(10);
+    let hash = bcrypt.hashSync(req.body.password, salt);
+    let tempPassword = hash;
     let account = new Account({
         username: req.body.username,
-        password: req.body.password,
+        password: tempPassword,
         email: req.body.email,
         age: req.body.age,
         element: req.body.element,

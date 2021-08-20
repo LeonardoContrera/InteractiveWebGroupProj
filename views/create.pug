@@ -3,20 +3,26 @@ extends layout
 block content 
     form(id='form' method='post' action='/create')
         p Username 
+            br
             input(type='text', name='username')
         p Password 
+            br
             input(type='text', name='password')
         p Email 
+            br
             input(type='text', name='email')
         p Age 
+            br
             input(type='text', name='age')
         p Element You Would like to Master?
+            br
             select(name='element')
                 option(value='Fire') Fire
                 option(value='Water') Water
                 option(value='Earth') Earth 
                 option(value='Wind') Wind 
         p Favorite Pokemon Gen? 
+            br
             select(name='pokemongen')
                 option(value='Gen1') Gen 1 (Kanto)
                 option(value='Gen2') Gen 2 (Johto)
@@ -27,6 +33,7 @@ block content
                 option(value='Gen7') Gen 7 (Alola) 
                 option(value='Gen8') Gen 8 (Galar) 
         p What system do you play on the most? 
+            br
             select(name='systemtoplay')
                 option(value='PC') PC
                 option(value='Playstation') Playstation

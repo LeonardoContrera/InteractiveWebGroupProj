@@ -38,15 +38,27 @@ exports.index = (req, res) => {
 exports.indexLogIn = (req, res) =>{
     console.log(req.body.username);
 
-    if(req.body.username == 'user' && req.body.password == 'pass'){
-        req.session.user = {
-            isAuthenticated: true,
-            username: req.body.username
+    Account.findOne({'username' : req.body.username}, function(err, account) {
+        if(err) return console.error(err);
+        if(account)
+        {
+            var validatePassword = bcrypt.compareSync(req.body.password, account.password);
+            if(validatePassword)
+            {
+                req.session.user = {
+                    isAuthenticated: true,
+                    username: req.body.username
+                }
+                res.redirect('/private');
+            } else {
+                console.log('Invalid password');
+                res.redirect('/');
+            }
+        } else{
+            console.log('Invalid username');
+            res.redirect('/');
         }
-        res.redirect('/private');
-    } else {
-        res.redirect('/');
-    }
+    });
 };
 
 exports.logout = (req, res) => {

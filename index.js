@@ -35,5 +35,7 @@ app.get('/private', checkAuth, routes.private);
 app.get('/logout', routes.logout);
 app.get('/create', routes.create);
 app.post('/create', urlencodedParser, routes.createAccount);
+app.get('/edit/:id', routes.edit);
+app.post('/edit/:id', urlencodedParser, routes.editAccount);
 
 app.listen(3000);

@@ -72,7 +72,15 @@ exports.logout = (req, res) => {
 };
 
 exports.private = (req, res) =>{
-    res.send(`Authorized access: Welcome ${req.session.user.username}!`);
+    //res.send(`Authorized access: Welcome ${req.session.user.username}!`);
+    let logText = `Authorized access: Welcome ${req.session.user.username}!`;
+    Account.find({ 'username': req.session.user.username }, (err, account) =>{
+        if(err) return console.error(err);
+        res.render('private', {
+            title: logText,
+            accounts: account
+        });
+    });
 };
 
 exports.create = (req, res) => {
@@ -99,4 +107,31 @@ exports.createAccount = (req, res) => {
         console.log(req.body.username + ' added');
     });
     res.redirect('/');
+};
+
+
+exports.edit = (req, res) =>{
+    Account.findById(req.params.id, (err, account) =>{
+        if(err) return console.error(err);
+        res.render('edit', {
+            title: 'Edit Account',
+            account
+        });
+    });
+};
+
+exports.editAccount = (req, res) => {
+    Account.findById(req.params.id, (err, account) =>{
+        if(err) return console.error(err);
+        account.email = req.body.email;
+        account.age = req.body.age;
+        account.element = req.body.element;
+        account.pokemongen = req.body.pokemongen;
+        account.systemtoplay = req.body.systemtoplay;
+        account.save((err, account) => {
+            if(err) return console.error(err);
+            console.log(account.username) + ' updated'
+        });
+        res.redirect('/private')
+    });
 };

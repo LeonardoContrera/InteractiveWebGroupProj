@@ -1,2 +1,21 @@
 extends layout 
 block content 
+    h3=title2
+    table(class='mytable')
+        tr  
+            th Email 
+            th Age
+            th Element To Master 
+            th Favorite Pokemon Gen 
+            th System you Play on Most 
+
+        each account in accounts 
+            tr 
+                td=account.email 
+                td=account.age
+                td=account.element
+                td=account.pokemongen
+                td=account.systemtoplay
+                td
+                    a(href='/edit/' + account.id) Edit  
+    a(href='/logout') Log Out

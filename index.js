@@ -7,6 +7,8 @@ const expressSession = require('express-session');
 
 const app = express();
 
+app.use(cookieParser());
+
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
 app.use(express.static(path.join(__dirname, 'public')));
@@ -35,5 +37,7 @@ app.get('/private', checkAuth, routes.private);
 app.get('/logout', routes.logout);
 app.get('/create', routes.create);
 app.post('/create', urlencodedParser, routes.createAccount);
+app.get('/edit/:id', routes.edit);
+app.post('/edit/:id', urlencodedParser, routes.editAccount);
 
 app.listen(3000);

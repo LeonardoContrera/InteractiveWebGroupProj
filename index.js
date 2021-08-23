@@ -7,6 +7,8 @@ const expressSession = require('express-session');
 
 const app = express();
 
+app.use(cookieParser());
+
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
 app.use(express.static(path.join(__dirname, 'public')));

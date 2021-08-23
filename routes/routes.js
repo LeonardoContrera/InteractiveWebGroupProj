@@ -1,4 +1,4 @@
-const { response } = require('express');
+const { response, text } = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
@@ -31,8 +31,23 @@ let Account = mongoose.model('Account_Collection', accountSchema);
 
 
 
+
 exports.index = (req, res) => {
-    res.render('index')
+    let today = new Date;
+    let visited = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate() + " "+ today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+    res.cookie('visited', visited, {maxAge: 999999999999999999999});
+
+    if(req.cookies.beenToSiteBefore == 'yes') {
+        text2 = `You were here last on ${req.cookies.visited}`;
+    }
+    else{
+        res.cookie('beenToSiteBefore', 'yes' ,{maxAge: 999999999999999999999});
+        text2 = "This is your first time before";
+    }
+    res.render('index', {
+        title: text2
+    })
 };
 
 exports.indexLogIn = (req, res) =>{
@@ -74,6 +89,9 @@ exports.logout = (req, res) => {
 exports.private = (req, res) =>{
     //res.send(`Authorized access: Welcome ${req.session.user.username}!`);
     let logText = `Authorized access: Welcome ${req.session.user.username}!`;
+
+
+
     Account.find({ 'username': req.session.user.username }, (err, account) =>{
         if(err) return console.error(err);
         res.render('private', {

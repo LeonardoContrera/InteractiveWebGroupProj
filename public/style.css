@@ -1,9 +1,36 @@
 html{
-
+    background-color: blueviolet;
+    color: white;
+    text-align: center;
+    font-family: 'Bungee', cursive;
 }
 
 th, td{
     border-width: 1px;
     padding: 8px;
     border-style: solid;
+    text-align: center;
+    font-family: 'Bungee', cursive;
+    
+}
+
+.mytable{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a{
+    color: white;
+}
+
+input{
+    font-family: 'Bungee', cursive;
+}
+
+option{
+    font-family: 'Bungee', cursive;
+}
+
+select{
+    font-family: 'Bungee', cursive;
 }

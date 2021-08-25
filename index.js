@@ -39,5 +39,6 @@ app.get('/create', routes.create);
 app.post('/create', urlencodedParser, routes.createAccount);
 app.get('/edit/:id', routes.edit);
 app.post('/edit/:id', urlencodedParser, routes.editAccount);
+app.get("/api", routes.api);
 
 app.listen(3000);

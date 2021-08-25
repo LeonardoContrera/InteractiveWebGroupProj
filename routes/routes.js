@@ -162,4 +162,7 @@ exports.api = (req, res) => {
             res.json(account);       
             });
     }
+    else{
+        res.json(account[req.query.id]);
+    }
 }

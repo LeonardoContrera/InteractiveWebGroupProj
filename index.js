@@ -7,11 +7,18 @@ const expressSession = require('express-session');
 
 const app = express();
 
+app.use((req, res, next) =>{
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-COntrol-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+})
+
 app.use(cookieParser());
 
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.use(expressSession({
     secret: 'wh4t3v3r',

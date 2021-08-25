@@ -153,3 +153,13 @@ exports.editAccount = (req, res) => {
         res.redirect('/private')
     });
 };
+
+exports.api = (req, res) => {
+    
+    if(req.query.id == undefined) {
+        Account.find((err, account) =>{
+            if(err) return console.error(err);
+            res.json(account);       
+            });
+    }
+}

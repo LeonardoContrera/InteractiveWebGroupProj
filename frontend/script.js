@@ -379,5 +379,3 @@ ctx.fillStyle = '#FFFFFF';
 ctx.font = '15px Arial';
 ctx.fillText('30', 80, 100);
     });
-
-

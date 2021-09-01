@@ -1,27 +1,29 @@
 extends layout 
 block content 
     h3=title2
-    table(class='mytable')
-        tr  
-            th Email 
-            th Age
-            th Element To Master 
-            th Favorite Pokemon Gen 
-            th System you Play on Most 
+    div(class="boxBackgroundHeader")
+        table(class='mytable')
+            tr  
+                th Email 
+                th Age
+                th Element To Master 
+                th Favorite Pokemon Gen 
+                th System you Play on Most 
 
-        each account in accounts 
-            tr 
-                td=account.email 
-                td=account.age
-                td=account.element
-                td=account.pokemongen
-                td=account.systemtoplay
-            a
-                img(src=account.profilePic) 
-            a(href='/edit/' + account.id) Edit
-            p
-            a(href='/editPic/' + account.id) Edit Profile Pic
-                
-            p 
-    p 
-    a(href='/logout') Log Out
+            each account in accounts 
+                tr 
+                    td=account.email 
+                    td=account.age
+                    td=account.element
+                    td=account.pokemongen
+                    td=account.systemtoplay
+                a
+                    img(src=account.profilePic) 
+                a(href='/edit/' + account.id) Edit
+                p
+                a(href='/editPic/' + account.id) Edit Profile Pic
+                    
+                p 
+    div(class="boxBackground")
+        p 
+        a(href='/logout') Log Out

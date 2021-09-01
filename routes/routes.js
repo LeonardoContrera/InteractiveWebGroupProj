@@ -189,6 +189,7 @@ exports.api = (req, res) => {
     else{
         res.json(account[req.query.id]);
     }
+}
 
 exports.editProfilePic = (req,res) => {
     Account.findById(req.params.id, (err, account) =>{

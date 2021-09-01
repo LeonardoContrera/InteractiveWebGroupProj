@@ -38,6 +38,7 @@ const checkAuth = (req, res, next) =>{
     }
 }
 
+
 app.get('/', routes.index);
 app.post('/', urlencodedParser, routes.indexLogIn);
 app.get('/private', checkAuth, routes.private);

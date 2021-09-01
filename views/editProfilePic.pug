@@ -1,6 +1,6 @@
 extends layout 
 block content 
-    form(id='form' method='post' action='/edit/' + account.id)
+    form(id='form' method='post' action='/editPic/' + account.id)
      p Create Your Avatar:
             p Skin Color
                 br
@@ -15,7 +15,6 @@ block content
             p Hair Type
                 br
                 select(name = 'hairType')
-                    option(value='undefined') Bald
                     option(value='longHair') Long Hair
                     option(value='shortHair') Short Hair
                     option(value='eyepatch') Eyepatch
@@ -44,7 +43,6 @@ block content
             p Hair Color
                 br
                 select(name = 'hairColor')
-                    option(value='ginger') Ginger
                     option(value='blonde') Blonde
                     option(value='black') Black
                     option(value='blondeGolden') Golden Blonde
@@ -59,7 +57,6 @@ block content
             p Facial Hair Type
                 br
                 select(name = 'facialHair')
-                    option(value='undefined') None
                     option(value='medium') Medium
                     option(value='beardMedium') Bearded Medium
                     option(value='light') Light

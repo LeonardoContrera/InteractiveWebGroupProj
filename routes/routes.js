@@ -180,12 +180,6 @@ exports.editAccount = (req, res) => {
 exports.editProfilePic = (req,res) => {
     Account.findById(req.params.id, (err, account) =>{
         if(err) return console.error(err);
-        account.email = req.body.email;
-        account.age = req.body.age;
-        account.element = req.body.element;
-        account.pokemongen = req.body.pokemongen;
-        account.systemtoplay = req.body.systemtoplay;
-        
         account.skinColor = req.body.skinColor;
         account.hairType = req.body.hairType;
         account.hairColor = req.body.hairColor;
@@ -196,7 +190,7 @@ exports.editProfilePic = (req,res) => {
         account.clothesType = req.body.clothesType;
         account.clothesColor = req.body.clothesColor;
         account.clotheGraphic = req.body.clotheGraphic;
-        account.profilePic = req.body.profilePic + "&skin=" + account.skinColor + "&top=" + account.hairType + "&hairColor="+ account.hairColor +
+        account.profilePic = 'https://avatars.dicebear.com/api/avataaars/:seed.svg?size=100' + "&skin=" + account.skinColor + "&top=" + account.hairType + "&hairColor="+ account.hairColor +
         "&facialHair=" + account.facialHair + "&facialHairColor=" + account.facialHairColor + "&eyes=" + account.eyeType + "&mouth=" + account.mouthType +
         "&clothes=" + account.clothesType + "&clothesColor=" + account.clothesColor + "&clotheGraphics=" + account.clotheGraphic;
         account.save((err, account) => {

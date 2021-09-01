@@ -177,6 +177,19 @@ exports.editAccount = (req, res) => {
     });
 };
 
+
+exports.api = (req, res) => {
+    
+    if(req.query.id == undefined) {
+        Account.find((err, account) =>{
+            if(err) return console.error(err);
+            res.json(account);       
+            });
+    }
+    else{
+        res.json(account[req.query.id]);
+    }
+
 exports.editProfilePic = (req,res) => {
     Account.findById(req.params.id, (err, account) =>{
         if(err) return console.error(err);
@@ -199,5 +212,4 @@ exports.editProfilePic = (req,res) => {
         });
         res.redirect('/private')
     });
-
 }

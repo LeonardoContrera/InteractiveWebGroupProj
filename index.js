@@ -39,5 +39,7 @@ app.get('/create', routes.create);
 app.post('/create', urlencodedParser, routes.createAccount);
 app.get('/edit/:id', routes.edit);
 app.post('/edit/:id', urlencodedParser, routes.editAccount);
+app.get('/editPic/:id', routes.editPic);
+app.post('/editPic/:id', urlencodedParser, routes.editProfilePic);
 
 app.listen(3000);

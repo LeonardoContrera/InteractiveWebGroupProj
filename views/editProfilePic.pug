@@ -1,0 +1,166 @@
+extends layout 
+block content 
+    form(id='form' method='post' action='/editPic/' + account.id)
+     p Create Your Avatar:
+            p Skin Color
+                br
+                select(name = 'skinColor')
+                    option(value='tanned') Tanned
+                    option(value='yellow') Yellow
+                    option(value='pale') Pale
+                    option(value='light') Light
+                    option(value='brown') Brown
+                    option(value='darkBrown') Dark Brown
+                    option(value='black') Black
+            p Hair Type
+                br
+                select(name = 'hairType')
+                    option(value='longHair') Long Hair
+                    option(value='shortHair') Short Hair
+                    option(value='eyepatch') Eyepatch
+                    option(value='bigHair') Big Hair
+                    option(value='bob') Bob
+                    option(value='bun') Bun
+                    option(value='curly') Curly
+                    option(value='curvy') Curvy
+                    option(value='dreads') Dreads
+                    option(value='frida') Frida
+                    option(value='fro') Fro
+                    option(value='froAndBand') Fro and Band
+                    option(value='miaWallace') Mia Wallace
+                    option(value='shavedSides') Shaved Sides
+                    option(value='straight01') Straight 01
+                    option(value='straightAndStrand') Straight and Strand
+                    option(value='dreads01') Dreads 01
+                    option(value='frizzle') Frizzle
+                    option(value='shaggy') Shaggy
+                    option(value='shaggyMullet') Shaggy Mullet
+                    option(value='shortCurly') Short Curly
+                    option(value='shortRound') Short Round
+                    option(value='sides') Sides
+                    option(value='theCaesar') the Caesar
+                    option(value='shortRound') Short Round
+            p Hair Color
+                br
+                select(name = 'hairColor')
+                    option(value='blonde') Blonde
+                    option(value='black') Black
+                    option(value='blondeGolden') Golden Blonde
+                    option(value='brown') Brown
+                    option(value='brownDark') Dark Brown
+                    option(value='pastel') Pastel
+                    option(value='pastelPink') Pastel Pink
+                    option(value='platinum') Platinum
+                    option(value='red') Red
+                    option(value='gray') Gray
+                    option(value='silverGray') Silver Gray
+            p Facial Hair Type
+                br
+                select(name = 'facialHair')
+                    option(value='medium') Medium
+                    option(value='beardMedium') Bearded Medium
+                    option(value='light') Light
+                    option(value='beardLight') Bearded Light
+                    option(value='majestic') Majestic
+                    option(value='beardMajestic') Majestic Beard
+                    option(value='fancy') Fancy
+                    option(value='moustaceFancy') Fancy Moustace
+                    option(value='magnum') Magnum
+                    option(value='moustaceMagnum') Moustaced Magnum
+            p Facial Hair Color
+                br
+                select(name = 'facialHairColor')
+                    option(value='auburn') Auburn
+                    option(value='blonde') Blonde
+                    option(value='black') Black
+                    option(value='blondeGolden') Golden Blonde
+                    option(value='brown') Brown
+                    option(value='brownDark') Dark Brown
+                    option(value='pastel') Pastel
+                    option(value='pastelPink') Pastel Pink
+                    option(value='platinum') Platinum
+                    option(value='red') Red
+                    option(value='gray') Gray
+                    option(value='silverGray') Silver Gray
+            p Eye Type
+                br
+                select(name = 'eyeType')
+                    option(value='close') Close
+                    option(value='closed') Closed
+                    option(value='cry') Cry
+                    option(value='default') Default
+                    option(value='dizzy') Dizzy
+                    option(value='xDizzy') xDizzy
+                    option(value='roll') Roll
+                    option(value='eyeRoll') Eye Roll
+                    option(value='happy') Happy
+                    option(value='hearts') Hearts
+                    option(value='side') Side
+                    option(value='squint') Squint
+                    option(value='surprised') Surprised
+                    option(value='wink') Wink
+                    option(value='winkWacky') Wink Wacky
+            p Mouth Type
+                br
+                select(name = 'mouthType')
+                    option(value='concerned') Concerned
+                    option(value='default') Default
+                    option(value='disbelief') Disbelief
+                    option(value='eating') Eating
+                    option(value='grimace') Grimace
+                    option(value='sad') Sad
+                    option(value='scream') Scream
+                    option(value='screamOpen') Scream Open
+                    option(value='serious') Serious
+                    option(value='smile') Smile
+                    option(value='tongue') Tongue
+                    option(value='twinkle') Twinkle
+                    option(value='vomit')   Vomit
+            p Clothes Type
+                br
+                select(name = 'clothesType') 
+                    option(value='blazer') Blazer
+                    option(value='blazerAndShirt') Blazer And Shirt
+                    option(value='sweater') Sweater
+                    option(value='collarAndSweater') Collar And Sweater
+                    option(value='shirt') Shirt
+                    option(value='graphicShirt') Graphic Shirt
+                    option(value='shirtCrewNeck') Shirt Crew Neck
+                    option(value='shirtScoopNeck') Shirt Scoop Neck
+                    option(value='shirtVNeck') Shirt V Neck
+                    option(value='hoodie') Hoodie
+                    option(value='overall') Overalls
+            p Clothes Color
+                br
+                select(name = 'clothesColor')
+                    option(value='black') Black
+                    option(value='blue') Blue
+                    option(value='gray') Gray
+                    option(value='heather') Heather
+                    option(value='pastel') Pastel
+                    option(value='pink') Pink
+                    option(value='red') Red
+                    option(value='white') White
+                    option(value='pastelYellow') Pastel Yellow
+            p Clothe Graphic
+                br
+                select(name = 'clotheGraphic')
+                    option(value='skullOutline') Skull Outline
+                    option(value='skull') Skull
+                    option(value='resist') Resist
+                    option(value='pizza') Pizza
+                    option(value='hola') Hola
+                    option(value='diamond') Diamond
+                    option(value='deer') Deer
+                    option(value='cumbia') Cumbia
+                    option(value='bear') Bear
+                    option(value='bat') Bat
+
+            img(src=account.profilePic)
+
+            
+
+            p
+            input(type="submit", value="Update Profile Picture")
+
+            

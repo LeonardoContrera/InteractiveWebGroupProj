@@ -24,7 +24,19 @@ let accountSchema = mongoose.Schema({
     age: String,
     element: String,
     pokemongen: String,
-    systemtoplay: String
+    systemtoplay: String,
+    skinColor: String,
+    hairType: String,
+    hairColor: String,
+    facialHair: String,
+    facialHairColor: String,
+    eyeType: String,
+    mouthType: String,
+    clothesType: String,
+    clothesColor: String,
+    clotheGraphic: String,
+    profilePic: String
+
 });
 
 let Account = mongoose.model('Account_Collection', accountSchema);
@@ -118,7 +130,8 @@ exports.createAccount = (req, res) => {
         age: req.body.age,
         element: req.body.element,
         pokemongen: req.body.pokemongen,
-        systemtoplay: req.body.systemtoplay
+        systemtoplay: req.body.systemtoplay,
+        profilePic: 'https://avatars.dicebear.com/api/avataaars/:seed.svg?size=100'
     });
     account.save((err, account) =>{
         if(err) return console.error(err);
@@ -133,6 +146,16 @@ exports.edit = (req, res) =>{
         if(err) return console.error(err);
         res.render('edit', {
             title: 'Edit Account',
+            account
+        });
+    });
+};
+
+exports.editPic = (req, res) =>{
+    Account.findById(req.params.id, (err, account) =>{
+        if(err) return console.error(err);
+        res.render('editProfilePic', {
+            title: 'Edit Profile Pic',
             account
         });
     });
@@ -154,6 +177,7 @@ exports.editAccount = (req, res) => {
     });
 };
 
+
 exports.api = (req, res) => {
     
     if(req.query.id == undefined) {
@@ -165,4 +189,27 @@ exports.api = (req, res) => {
     else{
         res.json(account[req.query.id]);
     }
+
+exports.editProfilePic = (req,res) => {
+    Account.findById(req.params.id, (err, account) =>{
+        if(err) return console.error(err);
+        account.skinColor = req.body.skinColor;
+        account.hairType = req.body.hairType;
+        account.hairColor = req.body.hairColor;
+        account.facialHair = req.body.facialHair;
+        account.facialHairColor = req.body.facialHairColor;
+        account.eyeType = req.body.eyeType;
+        account.mouthType = req.body.mouthType;
+        account.clothesType = req.body.clothesType;
+        account.clothesColor = req.body.clothesColor;
+        account.clotheGraphic = req.body.clotheGraphic;
+        account.profilePic = 'https://avatars.dicebear.com/api/avataaars/:seed.svg?size=100' + "&skin=" + account.skinColor + "&top=" + account.hairType + "&hairColor="+ account.hairColor +
+        "&facialHair=" + account.facialHair + "&facialHairColor=" + account.facialHairColor + "&eyes=" + account.eyeType + "&mouth=" + account.mouthType +
+        "&clothes=" + account.clothesType + "&clothesColor=" + account.clothesColor + "&clotheGraphics=" + account.clotheGraphic;
+        account.save((err, account) => {
+            if(err) return console.error(err);
+            console.log(account.username) + ' updated'
+        });
+        res.redirect('/private')
+    });
 }
